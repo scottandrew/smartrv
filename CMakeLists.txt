@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.0)
-project(lvgl8 VERSION 0.1.0)
+project(smartrv VERSION 0.1.0)
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 if(APPLE)
