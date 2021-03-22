@@ -75,7 +75,7 @@
 
 /* Default Dot Per Inch. Used to initialize default sizes such as widgets sized, style paddings.
  * (Not so important, you can adjust it to modify default sizes and spaces)*/
-#define LV_DPI_DEF                  130     /*[px/inch]*/
+#define LV_DPI_DEF                  146     /*[px/inch]*/
 
 /*=======================
  * FEATURE CONFIGURATION
@@ -456,7 +456,7 @@ e.g. "stm32f769xx.h" or "stm32f429xx.h" */
  * Themes
  *----------*/
 /* A simple, impressive and very complete theme */
-#define LV_USE_THEME_DEFAULT    1
+#define LV_USE_THEME_DEFAULT    0
 #if LV_USE_THEME_DEFAULT
 /* 1: Light mode; 0: Dark mode*/
 # define LV_THEME_DEFAULT_FLAG_LIGHT        1
@@ -464,6 +464,8 @@ e.g. "stm32f769xx.h" or "stm32f429xx.h" */
 /*Default transition time in [ms]*/
 # define LV_THEME_DEFAULT_TRANSITON_TIME    80
 #endif /*LV_USE_THEME_DEFAULT*/
+
+#define USE_SMARTRV_THEME 1
 
 /*-----------
  * Layouts

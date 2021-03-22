@@ -11,7 +11,7 @@ BuildDirectory: /Volumes/Rincon/Sources/NWDM/smartrv
 CostDataFile: 
 
 # Site is something like machine.domain, i.e. pragmatic.crd
-Site: iMac.local
+Site: Scotts-MacBook-Pro.local
 
 # Build name is osname-revision-compiler, i.e. Linux-2.4.2-2smp-c++
 BuildName: Darwin-clang
@@ -26,8 +26,8 @@ SubmitURL: http://
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "/usr/local/Cellar/cmake/3.18.2/bin/cmake" "/Volumes/Rincon/Sources/NWDM/smartrv"
-MakeCommand: /usr/local/Cellar/cmake/3.18.2/bin/cmake --build . --config "${CTEST_CONFIGURATION_TYPE}" -- -i
+ConfigureCommand: "/usr/local/Cellar/cmake/3.14.5/bin/cmake" "/Volumes/Rincon/Sources/NWDM/smartrv"
+MakeCommand: /usr/local/Cellar/cmake/3.14.5/bin/cmake --build . --config "${CTEST_CONFIGURATION_TYPE}" -- -i
 DefaultCTestConfigurationType: Release
 
 # version control
@@ -69,8 +69,6 @@ CompilerVersion: 12.0.0.12000032
 PurifyCommand: 
 ValgrindCommand: 
 ValgrindCommandOptions: 
-DrMemoryCommand: 
-DrMemoryCommandOptions: 
 MemoryCheckType: 
 MemoryCheckSanitizerOptions: 
 MemoryCheckCommand: MEMORYCHECK_COMMAND-NOTFOUND
