@@ -35,7 +35,7 @@ extern "C" {
  * @param disp pointer to display to attach the theme
  * @return a pointer to reference this theme later
  */
-lv_theme_t * lv_smartrv_theme_init(lv_disp_t * disp);
+lv_theme_t * smart_rv_theme_default_init(lv_disp_t* disp);
 
 /**********************
  *      MACROS

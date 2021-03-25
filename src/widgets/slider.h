@@ -5,7 +5,7 @@
 
 class Slider: public Object {
   protected:
-    Slider(lv_obj_t* parent): Object(lv_slider_create(parent, NULL)){};
+    Slider(lv_obj_t* parent): Object(lv_slider_create(parent)){};
 
 public:
     static std::shared_ptr<Slider> create(SharedObject parent);

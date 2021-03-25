@@ -84,6 +84,6 @@ void Object::setFont(uint8_t part, lv_state_t state, lv_font_t *font) {
   lv_obj_set_style_text_font(object, part, state, font);
 }
 
-void Object::setTextAlignment(uint8_t part, lv_state_t state, lv_text_align_t alignment) { 
+void Object::setTextAlignment(uint8_t part, lv_state_t state, lv_text_align_t alignment) {
   lv_obj_set_style_text_align(object, part, state, alignment);
 }

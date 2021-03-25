@@ -8,6 +8,7 @@
 class TankGuage: public Arc {
   private:
     SharedLabel percentageLabel;
+    SharedLabel percentageLabel1;
     SharedLabel gallonsRemaingLevel;
     SharedLabel tanKTypeLabel;
 

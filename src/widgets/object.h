@@ -22,6 +22,7 @@ class Object: public std::enable_shared_from_this<Object> {
     Object(lv_obj_t* anObject);
     virtual ~Object();
 
+
   public:
 
     lv_obj_t* lvObjectPtr() { return object; }

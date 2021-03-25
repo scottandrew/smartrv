@@ -10,7 +10,7 @@ public:
 
 
 protected:
-  Image(lv_obj_t* parent):Object(lv_img_create(parent, NULL)){};
+  Image(lv_obj_t* parent):Object(lv_img_create(parent)){};
 };
 
 typedef std::shared_ptr<Image> SharedImage;

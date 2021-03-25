@@ -4,8 +4,8 @@
 
 
 # Configuration directories and files
-SourceDirectory: /Volumes/Rincon/Sources/NWDM/smartrv
-BuildDirectory: /Volumes/Rincon/Sources/NWDM/smartrv
+SourceDirectory: /Users/scottandrew/Sources/smartrv
+BuildDirectory: /Users/scottandrew/Sources/smartrv
 
 # Where to place the cost data store
 CostDataFile: 
@@ -26,7 +26,7 @@ SubmitURL: http://
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "/usr/local/Cellar/cmake/3.14.5/bin/cmake" "/Volumes/Rincon/Sources/NWDM/smartrv"
+ConfigureCommand: "/usr/local/Cellar/cmake/3.14.5/bin/cmake" "/Users/scottandrew/Sources/smartrv"
 MakeCommand: /usr/local/Cellar/cmake/3.14.5/bin/cmake --build . --config "${CTEST_CONFIGURATION_TYPE}" -- -i
 DefaultCTestConfigurationType: Release
 

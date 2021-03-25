@@ -9,7 +9,7 @@ public:
 
 
 protected:
-  Widget(lv_obj_t* parent):Object(lv_obj_create(parent, NULL)){};
+  Widget(lv_obj_t* parent):Object(lv_obj_create(parent)){};
 };
 
 typedef std::shared_ptr<Widget> SharedWidget;

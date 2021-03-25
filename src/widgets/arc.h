@@ -12,7 +12,7 @@
 
 class Arc: public Object {
 protected:
-    Arc(lv_obj_t* parent): Object(lv_arc_create(parent, NULL)){};
+    Arc(lv_obj_t* parent): Object(lv_arc_create(parent)){};
 
 public:
     static std::shared_ptr<Arc> create(SharedObject parent);

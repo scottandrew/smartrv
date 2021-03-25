@@ -16,7 +16,7 @@ public:
 
 
 protected:
-  Button(lv_obj_t* parent):Object(lv_btn_create(parent, NULL)){};
+  Button(lv_obj_t* parent):Object(lv_btn_create(parent)){};
   SharedLabel label;
 };
 

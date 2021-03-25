@@ -49,7 +49,7 @@ void hal_init(void)
 
   lv_disp_t * disp = lv_disp_drv_register(&disp_drv);
 
-  lv_theme_t * th = lv_smartrv_theme_init(disp);
+  lv_theme_t * th = smart_rv_theme_default_init(disp);
   lv_disp_set_theme(disp, th);
 
   /* Add the mouse as input device

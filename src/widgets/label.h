@@ -10,7 +10,7 @@ public:
   static std::shared_ptr<Label> create(SharedObject parent);
   static std::shared_ptr<Label> create(SharedObject parent, std::string text);
 
-  Label(lv_obj_t* parent):Object(lv_label_create(parent, NULL)){};
+  Label(lv_obj_t* parent):Object(lv_label_create(parent)){};
 
   void setString(std::string text);
   std::string getString();
