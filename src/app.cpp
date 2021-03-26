@@ -23,7 +23,7 @@ void App::run() {
 
     shared_ptr<Slider> slider = Slider::create(screen);
     slider->setSize(200, 20);
-    slider->align(screen.get(), LV_ALIGN_CENTER, 0, 0);
+    slider->align(LV_ALIGN_CENTER, 0, 0);
 
     weak_ptr<TankGuage> weak_guage = weak_ptr<TankGuage>(tankGuage);
 

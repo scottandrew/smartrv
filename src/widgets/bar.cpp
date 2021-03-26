@@ -34,10 +34,10 @@ int16_t Bar::getMaxValue() {
   return lv_bar_get_max_value(lvObjectPtr());
 }
 
-void Bar::setType(lv_bar_type_t type) {
-  return lv_bar_set_type(lvObjectPtr(), type);
-}
+// void Bar::setType(lv_bar_type_t type) {
+//   return lv_bar_set_type(lvObjectPtr(), type);
+// }
 
-lv_bar_type_t Bar::getBarType() {
-  return lv_bar_get_type(lvObjectPtr());
-}
+// lv_bar_type_t Bar::getBarType() {
+//   return lv_bar_get_type(lvObjectPtr());
+// }

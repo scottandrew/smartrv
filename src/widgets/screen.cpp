@@ -7,7 +7,7 @@ using namespace std;
 
 shared_ptr<Screen> Screen::create() { return shared_ptr<Screen>(new Screen()); }
 
-Screen::Screen() : Object(lv_obj_create(NULL, NULL)) {}
+Screen::Screen() : Object(lv_obj_create(NULL)) {}
 
 void Screen::load() { lv_scr_load(lvObjectPtr()); }
 

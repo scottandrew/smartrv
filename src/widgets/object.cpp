@@ -25,15 +25,19 @@ Object::Object(lv_obj_t *anObject) {
 
 Object::~Object() { lv_obj_del(object); }
 
+void Object::removeStyle(uint8_t part, lv_state_t state, lv_style_t* style) { 
+  lv_obj_remove_style(object, part, state, style);
+}
+
 void Object::setSize(lv_coord_t width, lv_coord_t height) {
   lv_obj_set_size(object, width, height);
 }
 
 void Object::setWidth(lv_coord_t width) { lv_obj_set_width(object, width); }
 
-void Object::align(Object *to, lv_align_t alignment, lv_coord_t xOffset,
+void Object::align(lv_align_t alignment, lv_coord_t xOffset,
                    lv_coord_t yOffset) {
-  lv_obj_align(object, to ? to->object : NULL, alignment, xOffset, yOffset);
+  lv_obj_align(object, alignment, xOffset, yOffset);
 }
 
 void Object::setBackgroundColor(uint8_t part, lv_state_t state, Color color) {

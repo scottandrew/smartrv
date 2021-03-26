@@ -5,7 +5,7 @@
 
 class Bar: public Object {
 protected:
-  Bar(lv_obj_t* parent): Object(lv_bar_create(parent, NULL)){};
+  Bar(lv_obj_t* parent): Object(lv_bar_create(parent)){};
 
 public:
   static std::shared_ptr<Bar> create(SharedObject parent);
@@ -20,8 +20,8 @@ public:
   int16_t getMinValue();
   int16_t getMaxValue();
 
-  void setType(lv_bar_type_t type);
-  lv_bar_type_t getBarType();
+  // void setType(lv_bar_type_t type);
+  // lv_bar_type_t getBarType();
 };
 
 #endif

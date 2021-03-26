@@ -30,7 +30,9 @@ class Object: public std::enable_shared_from_this<Object> {
     void setSize(lv_coord_t width, lv_coord_t height);
     void setWidth(lv_coord_t width);
 
-    void align(Object* to, lv_align_t alignment, lv_coord_t xOffset, lv_coord_t yOffset);
+    void align(lv_align_t alignment, lv_coord_t xOffset, lv_coord_t yOffset);
+
+    void removeStyle(uint8_t part, lv_state_t state, lv_style_t* style = NULL);
 
     // local style helpers.
     void setBackgroundColor(uint8_t part, lv_state_t state, Color color);

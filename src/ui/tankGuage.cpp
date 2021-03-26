@@ -22,32 +22,20 @@ void TankGuage::layout() {
   setPaddingAllSides(LV_PART_INDICATOR, LV_STATE_DEFAULT, -1);
   setBorderWidth(LV_PART_INDICATOR, LV_STATE_DEFAULT, 0);
   setSize(GUAGE_SIZE, GUAGE_SIZE);
-  // setPaddingAllSides(LV_PART_MAIN, LV_STATE_DEFAULT, 4);
+  setPaddingAllSides(LV_PART_MAIN, LV_STATE_DEFAULT, 4);
+  removeStyle(LV_PART_KNOB, LV_STATE_ANY);
 
 
   percentageLabel = Label::create(shared_from_this());
   percentageLabel->setFont((lv_font_t*)&lv_font_montserrat_36);
- // percentageLabel->setWidth(GUAGE_SIZE);
   percentageLabel->setTextAlignment(LV_TEXT_ALIGN_CENTER);
-  percentageLabel->align(NULL, LV_ALIGN_CENTER, 0, 0);
+  percentageLabel->align(LV_ALIGN_CENTER, 0, -18);
 
-  ///lv_obj_align(lv_obj_get_layout(lvObjectPtr()), lvObjectPtr(), LV_ALIGN_CENTER, 0, -18);
-
-  lv_obj_center(percentageLabel->lvObjectPtr());
-  percentageLabel->setBackgroundColor(LV_PART_MAIN, LV_STATE_DEFAULT, Color::Red());
-
-  // percentageLabel1 = Label::create(shared_from_this());
-  // percentageLabel1->setFont((lv_font_t*)&lv_font_montserrat_36);
-  // percentageLabel1->setWidth(GUAGE_SIZE);x
-  // percentageLabel1->setTextAlignment(LV_TEXT_ALIGN_CENTER);
-  // percentageLabel1->align(this, LV_ALIGN_CENTER, 0, 0);
-
-  // gallonsRemaingLevel = Label::create(shared_from_this());
-  // gallonsRemaingLevel->setFont((lv_font_t*)&lv_font_montserrat_14);
-  // gallonsRemaingLevel->setWidth(GUAGE_SIZE);
-  // gallonsRemaingLevel->setTextAlignment(LV_TEXT_ALIGN_CENTER);
-  //gallonsRemaingLevel->alignMid(percentageLabel.get(), LV_ALIGN_CENTER, 0, 34);
-  //gallonsRemaingLevel->setBackgroundColor(LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, Color::Red());
+  gallonsRemaingLevel = Label::create(shared_from_this());
+  gallonsRemaingLevel->setFont((lv_font_t*)&lv_font_montserrat_14);
+  gallonsRemaingLevel->setTextAlignment(LV_TEXT_ALIGN_CENTER);
+  gallonsRemaingLevel->align(LV_ALIGN_CENTER, 0, -10);
+ // gallonsRemaingLevel->setBackgroundColor(LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, Color::Red());
 
   // tanKTypeLabel = Label::create(shared_from_this());
   // tanKTypeLabel->setFont((lv_font_t*)&lv_font_montserrat_18);
@@ -78,7 +66,7 @@ void TankGuage::setValue(int16_t value) {
   percentageLabel->setText(percent);
 
   // percentageLabel1->setText(percent);
-  // gallonsRemaingLevel->setText(remaining);
+   gallonsRemaingLevel->setText(remaining);
 
   // depending on the level we change colors.
   if (value < warningLevel) {
