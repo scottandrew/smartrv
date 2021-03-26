@@ -25,7 +25,7 @@ Object::Object(lv_obj_t *anObject) {
 
 Object::~Object() { lv_obj_del(object); }
 
-void Object::removeStyle(uint8_t part, lv_state_t state, lv_style_t* style) { 
+void Object::removeStyle(uint8_t part, lv_state_t state, lv_style_t* style) {
   lv_obj_remove_style(object, part, state, style);
 }
 
@@ -38,8 +38,12 @@ void Object::setWidth(lv_coord_t width) { lv_obj_set_width(object, width); }
 void Object::align(lv_align_t alignment, lv_coord_t xOffset,
                    lv_coord_t yOffset) {
   lv_obj_align(object, alignment, xOffset, yOffset);
+
 }
 
+void Object::alignTo(SharedObject to, lv_align_t align, lv_coord_t xOffset, lv_coord_t yOffset) {
+  lv_obj_align_to(object, to->lvObjectPtr(), align, xOffset, yOffset);
+}
 void Object::setBackgroundColor(uint8_t part, lv_state_t state, Color color) {
   lv_obj_set_style_bg_color(object, part, state, color.lvColor());
 }

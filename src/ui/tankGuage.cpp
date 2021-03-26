@@ -25,23 +25,24 @@ void TankGuage::layout() {
   setPaddingAllSides(LV_PART_MAIN, LV_STATE_DEFAULT, 4);
   removeStyle(LV_PART_KNOB, LV_STATE_ANY);
 
-
   percentageLabel = Label::create(shared_from_this());
   percentageLabel->setFont((lv_font_t*)&lv_font_montserrat_36);
   percentageLabel->setTextAlignment(LV_TEXT_ALIGN_CENTER);
-  percentageLabel->align(LV_ALIGN_CENTER, 0, -18);
-
+  percentageLabel->align(LV_ALIGN_CENTER, 0, -25);
+// percentageLabel->setWidth(250);
   gallonsRemaingLevel = Label::create(shared_from_this());
   gallonsRemaingLevel->setFont((lv_font_t*)&lv_font_montserrat_14);
   gallonsRemaingLevel->setTextAlignment(LV_TEXT_ALIGN_CENTER);
-  gallonsRemaingLevel->align(LV_ALIGN_CENTER, 0, -10);
- // gallonsRemaingLevel->setBackgroundColor(LV_LABEL_PART_MAIN, LV_STATE_DEFAULT, Color::Red());
+   gallonsRemaingLevel->setPaddingTop(LV_PART_MAIN, LV_STATE_DEFAULT, 0);
+   // gallonsRemaingLevel->alignTo(percentageLabel, LV_ALIGN_BOTTOM_LEFT, 0, 15);
+// gallonsRemaingLevel->setWidth(250);
+  gallonsRemaingLevel->align(LV_ALIGN_CENTER, 0, 12);
 
-  // tanKTypeLabel = Label::create(shared_from_this());
-  // tanKTypeLabel->setFont((lv_font_t*)&lv_font_montserrat_18);
-  // tanKTypeLabel->setWidth(250);
-  // tanKTypeLabel->setTextAlignment(LV_TEXT_ALIGN_CENTER);
-  //tanKTypeLabel->alignMid(guage.get(), LV_ALIGN_IN_BOTTOM_MID, 0,-36);
+  tanKTypeLabel = Label::create(shared_from_this());
+  tanKTypeLabel->setFont((lv_font_t*)&lv_font_montserrat_18);
+  tanKTypeLabel->setTextAlignment(LV_TEXT_ALIGN_CENTER);
+  tanKTypeLabel->align(LV_ALIGN_BOTTOM_MID, 0, -20);
+  tanKTypeLabel->setText(title.c_str());
   //tanKTypeLabel->setPaddingAllSides(LV, LV_STATE_DEFAULT, 0);
 
   // lv_obj_set_auto_realign(percentageLabel->lvObjectPtr(), true);

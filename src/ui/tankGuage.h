@@ -2,6 +2,7 @@
 #define __TANKGUAGE_H
 
 #include "../widgets/arc.h"
+#include "../widgets/widget.h"
 #include "../widgets/label.h"
 #include "../theme/color.h"
 
@@ -11,6 +12,7 @@ class TankGuage: public Arc {
     SharedLabel percentageLabel1;
     SharedLabel gallonsRemaingLevel;
     SharedLabel tanKTypeLabel;
+    SharedWidget container;
 
     Color goodBackground = Color(37, 74, 39);
     Color goodIndicator = Color(128, 255, 134);

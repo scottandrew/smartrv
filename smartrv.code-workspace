@@ -11,7 +11,8 @@
 			"mouse.h": "c",
 			"memory": "cpp",
 			"smartrv_theme.h": "c",
-			"lv_theme.h": "c"
+			"lv_theme.h": "c",
+			"iterator": "cpp"
 		}
 	}
 }
