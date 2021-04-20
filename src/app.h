@@ -1,24 +1,29 @@
 #ifndef APP_H
 #define APP_H
 
-#include "widgets/screen.h"
 #include "ui/tankGuage.h"
+#include "widgets/screen.h"
 #include "widgets/slider.h"
 
 class App {
-  private:
-    SharedScreen screen;
-    SharedTankGuage tankGuage;
-    SharedSlider slider;
+private:
+  SharedScreen screen;
+  SharedSlider slider;
 
+  SharedTankGuage freshWaterGuage;
+  SharedTankGuage grayWaterGuage;
+  SharedTankGuage blackWaterGuage;
+  SharedTankGuage lpTankGuage;
 
-    bool on;
+  SharedWidget guageContainer;
 
-  public:
-      App();
-    ~App();
+  bool on;
 
-    void run();
+public:
+  App();
+  ~App();
+
+  void run();
 };
 
 #endif

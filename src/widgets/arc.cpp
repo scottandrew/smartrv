@@ -26,19 +26,19 @@ void Arc::setValue(int16_t value) {
 // Local style helpers..
     // style helpers..
 void Arc::setBackgroundArcWidth(lv_coord_t width) {
-    lv_obj_set_style_arc_width(lvObjectPtr(), LV_PART_MAIN, LV_STATE_DEFAULT, width);
+    lv_obj_set_style_arc_width(lvObjectPtr(), width, LV_STATE_DEFAULT);
 }
 
 void Arc::setIndicatorWidth(lv_coord_t width) {
-    lv_obj_set_style_arc_width(lvObjectPtr(), LV_PART_INDICATOR, LV_STATE_DEFAULT, width);
+    lv_obj_set_style_arc_width(lvObjectPtr(), width, LV_PART_INDICATOR | LV_STATE_DEFAULT);
 }
 
 void Arc::setBackgroundArcColor(Color& color) {
-    lv_obj_set_style_arc_color(lvObjectPtr(), LV_PART_MAIN, LV_STATE_DEFAULT, color.lvColor());
+    lv_obj_set_style_arc_color(lvObjectPtr(), color.lvColor(), LV_PART_MAIN | LV_STATE_DEFAULT);
 }
 
 void Arc::setIndicatorColor(Color& color) {
-    lv_obj_set_style_arc_color(lvObjectPtr(), LV_PART_INDICATOR, LV_STATE_DEFAULT, color.lvColor());
+    lv_obj_set_style_arc_color(lvObjectPtr(), color.lvColor(), LV_PART_INDICATOR | LV_STATE_DEFAULT);
 }
 
 void Arc::setAdjustable(bool adjustable) {

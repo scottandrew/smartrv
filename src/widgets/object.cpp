@@ -1,32 +1,34 @@
 #include "object.h"
 #include <iostream>
+#include "lvgl/lvgl.h"
 
 using namespace std;
 
 Object::Object(lv_obj_t *anObject) {
   object = anObject;
+  object->user_data = this;
 
-  auto callback = [](lv_obj_t *obj, lv_event_t event) -> void {
+  auto callback = [](lv_event_t *event) -> void {
     try {
-      auto data = lv_obj_get_event_dsc(obj, 0);
-      Object *eventObject = (Object *)data->user_data;
+      Object *eventObject = (Object *)event->target->user_data;
 
-      if (event == LV_EVENT_DELETE) {
-        data->user_data = NULL;
+      if (event->code == LV_EVENT_DELETE) {
+        event->target = NULL;
         return;
       }
-      eventObject->events.at(event)(eventObject);
+
+      eventObject->events.at(event->code)(eventObject);
     } catch (...) {
     }
   };
 
-  lv_obj_add_event_cb(object, callback, this);
+  lv_obj_add_event_cb(object, callback, LV_EVENT_ALL, this);
 }
 
 Object::~Object() { lv_obj_del(object); }
 
-void Object::removeStyle(uint8_t part, lv_state_t state, lv_style_t* style) {
-  lv_obj_remove_style(object, part, state, style);
+void Object::removeStyle(lv_part_t part, lv_state_t state, lv_style_t *style) {
+  lv_obj_remove_style(object, style,  part | state);
 }
 
 void Object::setSize(lv_coord_t width, lv_coord_t height) {
@@ -38,60 +40,74 @@ void Object::setWidth(lv_coord_t width) { lv_obj_set_width(object, width); }
 void Object::align(lv_align_t alignment, lv_coord_t xOffset,
                    lv_coord_t yOffset) {
   lv_obj_align(object, alignment, xOffset, yOffset);
-
 }
 
-void Object::alignTo(SharedObject to, lv_align_t align, lv_coord_t xOffset, lv_coord_t yOffset) {
+void Object::alignTo(SharedObject to, lv_align_t align, lv_coord_t xOffset,
+                     lv_coord_t yOffset) {
   lv_obj_align_to(object, to->lvObjectPtr(), align, xOffset, yOffset);
 }
-void Object::setBackgroundColor(uint8_t part, lv_state_t state, Color color) {
-  lv_obj_set_style_bg_color(object, part, state, color.lvColor());
+void Object::setBackgroundColor(lv_part_t part, lv_state_t state, Color color) {
+  lv_obj_set_style_bg_color(object, color.lvColor(), part | state);
 }
 
-void Object::setLineColor(uint8_t part, lv_state_t state, Color color) {
-  lv_obj_set_style_line_color(object, part, state, color.lvColor());
+void Object::setLineColor(lv_part_t part, lv_state_t state, Color color) {
+  lv_obj_set_style_line_color(object,  color.lvColor(), part | state);
 }
 
-void Object::setBorderColor(uint8_t part, lv_state_t state, Color color) {
-  lv_obj_set_style_border_color(object, part, state, color.lvColor());
+void Object::setBorderColor(lv_part_t part, lv_state_t state, Color color) {
+  lv_obj_set_style_border_color(object, color.lvColor(), part | state);
 }
 
-void Object::setLineWidth(uint8_t part, lv_state_t state, lv_coord_t width) {
-  lv_obj_set_style_line_width(object, part, state, width);
+void Object::setLineWidth(lv_part_t part, lv_state_t state, lv_coord_t width) {
+  lv_obj_set_style_line_width(object, width, part |state);
 }
 
-void Object::setPaddingAllSides(uint8_t part, lv_state_t state,
+void Object::setPaddingAllSides(lv_part_t part, lv_state_t state,
                                 lv_coord_t padding) {
-  lv_obj_set_style_pad_all(object, part, state, padding);
+  lv_obj_set_style_pad_all(object, padding, part | state);
 }
 
-void Object::setPaddingLeft(uint8_t part, lv_state_t state,
+void Object::setPaddingLeft(lv_part_t part, lv_state_t state,
                             lv_coord_t padding) {
-  lv_obj_set_style_pad_left(object, part, state, padding);
+  lv_obj_set_style_pad_left(object, padding, part | state);
 }
 
-void Object::setPaddingRight(uint8_t part, lv_state_t state,
+void Object::setPaddingRight(lv_part_t part, lv_state_t state,
                              lv_coord_t padding) {
-  lv_obj_set_style_pad_right(object, part, state, padding);
+  lv_obj_set_style_pad_right(object, padding, part | state);
 }
 
-void Object::setPaddingTop(uint8_t part, lv_state_t state, lv_coord_t padding) {
-  lv_obj_set_style_pad_top(object, part, state, padding);
+void Object::setPaddingTop(lv_part_t part, lv_state_t state, lv_coord_t padding) {
+  lv_obj_set_style_pad_top(object, padding, part | state);
 }
 
-void Object::setPaddingBottom(uint8_t part, lv_state_t state,
+void Object::setPaddingBottom(lv_part_t part, lv_state_t state,
                               lv_coord_t padding) {
-  lv_obj_set_style_pad_bottom(object, part, state, padding);
+  lv_obj_set_style_pad_bottom(object, padding, part | state);
 }
 
-void Object::setBorderWidth(uint8_t part, lv_state_t state, lv_coord_t width) {
-  lv_obj_set_style_border_width(object, part, state, width);
+void Object::setBorderWidth(lv_part_t part, lv_state_t state, lv_coord_t width) {
+  lv_obj_set_style_border_width(object, width,part | state);
 }
 
-void Object::setFont(uint8_t part, lv_state_t state, lv_font_t *font) {
-  lv_obj_set_style_text_font(object, part, state, font);
+void Object::setFont(lv_part_t part, lv_state_t state, lv_font_t *font) {
+  lv_obj_set_style_text_font(object, font, part | state);
 }
 
-void Object::setTextAlignment(uint8_t part, lv_state_t state, lv_text_align_t alignment) {
-  lv_obj_set_style_text_align(object, part, state, alignment);
+void Object::setTextAlignment(lv_part_t part, lv_state_t state,
+                              lv_text_align_t alignment) {
+  lv_obj_set_style_text_align(object, alignment, part | state);
+}
+
+lv_coord_t Object::getWidth() { return lv_obj_get_width(object); }
+
+// flex support
+void Object::setFlexFlow(lv_flex_flow_t flow) {
+  return lv_obj_set_flex_flow(object, flow);
+}
+
+void Object::setFlexPlace(lv_flex_place_t main_place,
+                          lv_flex_place_t cross_place,
+                          lv_flex_place_t track_cross_place) {
+  lv_obj_set_flex_place(object, main_place, cross_place, track_cross_place);
 }
